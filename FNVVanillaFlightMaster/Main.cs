@@ -306,7 +306,7 @@ public class Main : IPlugin
 	{
 		List<FlightMasterDB> list = Main.fillDB();
 		float num = 99999f;
-		FlightMasterDB result = new FlightMasterDB("null", 0, new Vector3(0f, 0f, 0f, "None"), false, false);
+		FlightMasterDB result = new FlightMasterDB("null", 0, new Vector3(0f, 0f, 0f, "None"), 0, false);
 		foreach (FlightMasterDB flightMasterDB in list)
 		{
 			if (flightMasterDB.alreadyDiscovered && flightMasterDB.position.DistanceTo(ObjectManager.Me.Position) < num && flightMasterDB.continent == Main.checkContinent())
@@ -323,7 +323,7 @@ public class Main : IPlugin
 	{
 		List<FlightMasterDB> list = Main.fillDB();
 		float num = 99999f;
-		FlightMasterDB result = new FlightMasterDB("null", 0, new Vector3(0f, 0f, 0f, "None"), false, false);
+		FlightMasterDB result = new FlightMasterDB("null", 0, new Vector3(0f, 0f, 0f, "None"), 0, false);
 		foreach (FlightMasterDB flightMasterDB in list)
 		{
 			if (flightMasterDB.alreadyDiscovered && flightMasterDB.position.DistanceTo(Main.destinationVector) < num && flightMasterDB.continent == Main.checkContinent())
@@ -336,9 +336,9 @@ public class Main : IPlugin
 	}
 
 	// Token: 0x06000013 RID: 19
-	public static bool checkContinent()
+	public static int checkContinent()
 	{
-		return Usefuls.ContinentId == 1;
+		return Usefuls.ContinentId;
 	}
 
 	// Token: 0x06000014 RID: 20
@@ -361,37 +361,37 @@ public class Main : IPlugin
 	{
 		return new List<FlightMasterDB>
 		{
-			new FlightMasterDB("Grom'gol", 1387, new Vector3(-12417.5f, 144.474f, 3.36881f, "None"), false, FNVFlightMasterSettings.CurrentSettings.StranglethornGromgol),
-			new FlightMasterDB("Booty Bay", 2858, new Vector3(-14448.6f, 506.129f, 26.3565f, "None"), false, FNVFlightMasterSettings.CurrentSettings.StranglethornBootyBay),
-			new FlightMasterDB("Silverpine Forest", 2226, new Vector3(473.939f, 1533.95f, 131.96f, "None"), false, FNVFlightMasterSettings.CurrentSettings.SilverpineForest),
-			new FlightMasterDB("Hillsbrad Foothills", 2389, new Vector3(2.67557f, -857.919f, 58.889f, "None"), false, FNVFlightMasterSettings.CurrentSettings.HillsbradFoothills),
-			new FlightMasterDB("Arathi Highlands", 2851, new Vector3(-917.658, -3496.94f, 70.4505f, "None"), false, FNVFlightMasterSettings.CurrentSettings.ArathiHighlands),
-			new FlightMasterDB("Badlands", 2861, new Vector3(-6632.22f, -2178.42f, 244.227, "None"), false, FNVFlightMasterSettings.CurrentSettings.Badlands),
-			new FlightMasterDB("Mulgore", 2995, new Vector3(-1196.75f, 26.0777f, 177.033f, "None"), false, FNVFlightMasterSettings.CurrentSettings.Mulgore),
-			new FlightMasterDB("Searing Gorge", 3305, new Vector3(-6559.26f, -1100.23f, 310.353f, "None"), false, FNVFlightMasterSettings.CurrentSettings.SearingGorge),
-			new FlightMasterDB("Orgrimmar", 3310, new Vector3(-6559.26f, -1100.23f, 310.353f, "None"), false, FNVFlightMasterSettings.CurrentSettings.Orgrimmar),
-			new FlightMasterDB("Crossroads", 3615, new Vector3(-437.137f, -2596f, 95.8708f, "None"), false, FNVFlightMasterSettings.CurrentSettings.BarrensCrossroads),
-			new FlightMasterDB("Camp Taurajo", 10378, new Vector3(-2384.08f, -1880.94f, 95.9336f, "None"), false, FNVFlightMasterSettings.CurrentSettings.BarrensTaurajo),
-			new FlightMasterDB("Ratchet", 16227, new Vector3(-898.246f, -3769.65f, 11.7932f, "None"), false, FNVFlightMasterSettings.CurrentSettings.BarrensRatchet),
-			new FlightMasterDB("Stonetalon Peak", 4407, new Vector3(2682.83f, 1466.45f, 233.792f, "None"), false, FNVFlightMasterSettings.CurrentSettings.StonetalonPeak),
-			new FlightMasterDB("Sun Rock Retreat", 4312, new Vector3(968.077f, 1042.29f, 104.563f, "None"), false, FNVFlightMasterSettings.CurrentSettings.StonetalonSunRockRetreat),
-			new FlightMasterDB("The Hinterlands", 4314, new Vector3(-631.736f, -4720.6f, 5.48226f, "None"), false, FNVFlightMasterSettings.CurrentSettings.TheHinterlands),
-			new FlightMasterDB("Thousand Needles", 4317, new Vector3(-5407.12f, -2419.61f, 89.7094f, "None"), false, FNVFlightMasterSettings.CurrentSettings.ThousandNeedles),
-			new FlightMasterDB("Undercity", 4551, new Vector3(1567.12f, 266.345f, -43.0194f, "None"), false, FNVFlightMasterSettings.CurrentSettings.Undercity),
-			new FlightMasterDB("Swamp of Sorrows", 6026, new Vector3(-10459.2f, -3279.76f, 21.5445f, "None"), false, FNVFlightMasterSettings.CurrentSettings.SwampofSorrows),
-			new FlightMasterDB("Desolace", 6726, new Vector3(-1770.37f, 3262.19f, 5.10852f, "None"), false, FNVFlightMasterSettings.CurrentSettings.Desolace),
-			new FlightMasterDB("Tanaris", 7824, new Vector3(-7045.24f, -3779.4f, 10.3158f, "None"), false, FNVFlightMasterSettings.CurrentSettings.Tanaris),
-			new FlightMasterDB("Feralas", 8020, new Vector3(-4421.94f, 198.146f, 25.1863f, "None"), false, FNVFlightMasterSettings.CurrentSettings.Feralas),
-			new FlightMasterDB("Azshara", 8610, new Vector3(3664.02f, -4390.45f, 113.169f, "None"), false, FNVFlightMasterSettings.CurrentSettings.Azshara),
-			new FlightMasterDB("Winterspring", 11139, new Vector3(6815.12f, -4610.12f, 710.759f, "None"), false, FNVFlightMasterSettings.CurrentSettings.Winterspring),
-			new FlightMasterDB("Dustwallow Marsh", 11899, new Vector3(-3149.14f, -2842.13f, 34.6649f, "None"), false, FNVFlightMasterSettings.CurrentSettings.DustwallowMarsh),
-			new FlightMasterDB("Felwood", 11900, new Vector3(5064.72f, -338.845f, 367.463f, "None"), false, FNVFlightMasterSettings.CurrentSettings.Felwood),
-			new FlightMasterDB("Zoram'gar Outpost", 11901, new Vector3(3373.69f, 994.351f, 5.36158f, "None"), false, FNVFlightMasterSettings.CurrentSettings.AshenvaleZoramgar),
-			new FlightMasterDB("Splintertree Post", 12616, new Vector3(2305.64f, -2520.15f, 103.893f, "None"), false, FNVFlightMasterSettings.CurrentSettings.AshenvaleSplintertree),
-			new FlightMasterDB("Moonglade", 12740, new Vector3(7466.15f, -2122.08f, 492.427f, "None"), false, FNVFlightMasterSettings.CurrentSettings.Moonglade),
-			new FlightMasterDB("Burning Steppes", 13177, new Vector3(-7504.06f, -2190.77f, 165.302f, "None"), false, FNVFlightMasterSettings.CurrentSettings.BurningSteppes),
-			new FlightMasterDB("Silithus", 15178, new Vector3(-6810.2f, 841.704f, 49.7481f, "None"), false, FNVFlightMasterSettings.CurrentSettings.Silithus),
-			new FlightMasterDB("Un'Goro Crater", 10583, new Vector3(-6110.54f, -1140.35f, -186.866f, "None"), false, FNVFlightMasterSettings.CurrentSettings.UngoroCrater)
+			new FlightMasterDB("Grom'gol", 1387, new Vector3(-12417.5f, 144.474f, 3.36881f, "None"), 2, FNVFlightMasterSettings.CurrentSettings.StranglethornGromgol),
+			new FlightMasterDB("Booty Bay", 2858, new Vector3(-14448.6f, 506.129f, 26.3565f, "None"), 2, FNVFlightMasterSettings.CurrentSettings.StranglethornBootyBay),
+			new FlightMasterDB("Silverpine Forest", 2226, new Vector3(473.939f, 1533.95f, 131.96f, "None"), 2, FNVFlightMasterSettings.CurrentSettings.SilverpineForest),
+			new FlightMasterDB("Hillsbrad Foothills", 2389, new Vector3(2.67557f, -857.919f, 58.889f, "None"), 2, FNVFlightMasterSettings.CurrentSettings.HillsbradFoothills),
+			new FlightMasterDB("Arathi Highlands", 2851, new Vector3(-917.658, -3496.94f, 70.4505f, "None"), 2, FNVFlightMasterSettings.CurrentSettings.ArathiHighlands),
+			new FlightMasterDB("Badlands", 2861, new Vector3(-6632.22f, -2178.42f, 244.227, "None"), 2, FNVFlightMasterSettings.CurrentSettings.Badlands),
+			new FlightMasterDB("Mulgore", 2995, new Vector3(-1196.75f, 26.0777f, 177.033f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.Mulgore),
+			new FlightMasterDB("Searing Gorge", 3305, new Vector3(-6559.26f, -1100.23f, 310.353f, "None"), 2, FNVFlightMasterSettings.CurrentSettings.SearingGorge),
+			new FlightMasterDB("Orgrimmar", 3310, new Vector3(1676.25f, -4313.45f, 61.7176f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.Orgrimmar),
+			new FlightMasterDB("Crossroads", 3615, new Vector3(-437.137f, -2596f, 95.8708f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.BarrensCrossroads),
+			new FlightMasterDB("Camp Taurajo", 10378, new Vector3(-2384.08f, -1880.94f, 95.9336f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.BarrensTaurajo),
+			new FlightMasterDB("Ratchet", 16227, new Vector3(-898.246f, -3769.65f, 11.7932f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.BarrensRatchet),
+			new FlightMasterDB("Stonetalon Peak", 4407, new Vector3(2682.83f, 1466.45f, 233.792f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.StonetalonPeak),
+			new FlightMasterDB("Sun Rock Retreat", 4312, new Vector3(968.077f, 1042.29f, 104.563f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.StonetalonSunRockRetreat),
+			new FlightMasterDB("The Hinterlands", 4314, new Vector3(-631.736f, -4720.6f, 5.48226f, "None"), 2, FNVFlightMasterSettings.CurrentSettings.TheHinterlands),
+			new FlightMasterDB("Thousand Needles", 4317, new Vector3(-5407.12f, -2419.61f, 89.7094f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.ThousandNeedles),
+			new FlightMasterDB("Undercity", 4551, new Vector3(1567.12f, 266.345f, -43.0194f, "None"), 2, FNVFlightMasterSettings.CurrentSettings.Undercity),
+			new FlightMasterDB("Swamp of Sorrows", 6026, new Vector3(-10459.2f, -3279.76f, 21.5445f, "None"), 2, FNVFlightMasterSettings.CurrentSettings.SwampofSorrows),
+			new FlightMasterDB("Desolace", 6726, new Vector3(-1770.37f, 3262.19f, 5.10852f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.Desolace),
+			new FlightMasterDB("Tanaris", 7824, new Vector3(-7045.24f, -3779.4f, 10.3158f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.Tanaris),
+			new FlightMasterDB("Feralas", 8020, new Vector3(-4421.94f, 198.146f, 25.1863f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.Feralas),
+			new FlightMasterDB("Azshara", 8610, new Vector3(3664.02f, -4390.45f, 113.169f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.Azshara),
+			new FlightMasterDB("Winterspring", 11139, new Vector3(6815.12f, -4610.12f, 710.759f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.Winterspring),
+			new FlightMasterDB("Dustwallow Marsh", 11899, new Vector3(-3149.14f, -2842.13f, 34.6649f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.DustwallowMarsh),
+			new FlightMasterDB("Felwood", 11900, new Vector3(5064.72f, -338.845f, 367.463f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.Felwood),
+			new FlightMasterDB("Zoram'gar Outpost", 11901, new Vector3(3373.69f, 994.351f, 5.36158f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.AshenvaleZoramgar),
+			new FlightMasterDB("Splintertree Post", 12616, new Vector3(2305.64f, -2520.15f, 103.893f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.AshenvaleSplintertree),
+			new FlightMasterDB("Moonglade", 12740, new Vector3(7466.15f, -2122.08f, 492.427f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.Moonglade),
+			new FlightMasterDB("Burning Steppes", 13177, new Vector3(-7504.06f, -2190.77f, 165.302f, "None"), 2, FNVFlightMasterSettings.CurrentSettings.BurningSteppes),
+			new FlightMasterDB("Silithus", 15178, new Vector3(-6810.2f, 841.704f, 49.7481f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.Silithus),
+			new FlightMasterDB("Un'Goro Crater", 10583, new Vector3(-6110.54f, -1140.35f, -186.866f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.UngoroCrater)
 
 		};
 	}

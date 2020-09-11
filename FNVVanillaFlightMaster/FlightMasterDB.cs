@@ -5,7 +5,7 @@ using robotManager.Helpful;
 public class FlightMasterDB
 {
 	// Token: 0x0600001A RID: 26 RVA: 0x000020E7 File Offset: 0x000002E7
-	public FlightMasterDB(string name, int NPCId, Vector3 position, bool continent, bool alreadyDiscovered)
+	public FlightMasterDB(string name, int NPCId, Vector3 position, int continent, bool alreadyDiscovered)
 	{
 		this.name = name;
 		this.NPCId = NPCId;
@@ -32,7 +32,7 @@ public class FlightMasterDB
 	// Token: 0x17000005 RID: 5
 	// (get) Token: 0x06000021 RID: 33 RVA: 0x0000214E File Offset: 0x0000034E
 	// (set) Token: 0x06000022 RID: 34 RVA: 0x00002156 File Offset: 0x00000356
-	public bool continent { get; set; }
+	public int continent { get; set; }
 
 	// Token: 0x17000006 RID: 6
 	// (get) Token: 0x06000023 RID: 35 RVA: 0x0000215F File Offset: 0x0000035F
