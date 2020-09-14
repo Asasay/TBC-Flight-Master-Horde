@@ -148,7 +148,7 @@ public class Main : IPlugin
 	// Token: 0x0600000A RID: 10
 	private void watchForEvents()
 	{
-		EventsLua.AttachEventLua(LuaEventsId.CHAT_MSG_PET_INFO, delegate(object m)
+		EventsLua.AttachEventLua(LuaEventsId.TAXIMAP_OPENED, delegate(object m)
 		{
 			Main.g__CHAT_MSG_PET_INFO();
 		});
@@ -416,7 +416,7 @@ public class Main : IPlugin
 						Logging.Write("[VanillaFlightMaster]: Taxi node update in progress, waiting...");
 						Thread.Sleep(10000);
 					}
-					int num = Lua.LuaDoString<int>("for i=0,30 do if string.find(TaxiNodeName(i),'" + to.name + "') then return i end end", "");
+					int num = Lua.LuaDoString<int>("for i=0,30 do if string.find(TaxiNodeName(i),\'" + to.name.Replace("'", "\\'") + "\') then return i end end", "");
 					Lua.LuaDoString("TakeTaxiNode(" + num + ")", false);
 					Logging.Write("[VanillaFlightMaster]: Taking Taxi from " + from.name + " to " + to.name);
 					Thread.Sleep(Usefuls.Latency + 500);
@@ -483,7 +483,7 @@ public class Main : IPlugin
 			{
 				if (flightMasterDB.continent.Equals(Main.checkContinent()))
 				{
-					int num = Lua.LuaDoString<int>("for i=0,30 do if string.find(TaxiNodeName(i),'" + flightMasterDB.name + "') then return i end end return -1", "");
+					int num = Lua.LuaDoString<int>("for i=0,30 do if string.find(TaxiNodeName(i),\'" + to.name.Replace("'", "\\'") + "\') then return i end end return -1", "");
 					if (num == -1 && flightMasterDB.alreadyDiscovered)
 					{
 						Logging.Write("[VanillaFlightMaster]: Taxi node " + flightMasterDB.name + " has not been discovered so far");
