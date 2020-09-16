@@ -34,7 +34,6 @@ public class FNVFlightMasterSettings : Settings
 		this.BarrensCrossroads = false;
 		this.BarrensRatchet = false;
 		this.BarrensTaurajo = false;
-		this.StonetalonPeak = false;
 		this.StonetalonSunRockRetreat = false;
 		this.TheHinterlands = false;
 		this.ThousandNeedles = false;
@@ -70,7 +69,6 @@ public class FNVFlightMasterSettings : Settings
 		if (needToChange.name.Contains("Crossroads")) FNVFlightMasterSettings.CurrentSettings.BarrensCrossroads = value;
 		if (needToChange.name.Contains("Ratchet")) FNVFlightMasterSettings.CurrentSettings.BarrensRatchet = value;
 		if (needToChange.name.Contains("Taurajo")) FNVFlightMasterSettings.CurrentSettings.BarrensTaurajo = value;
-		if (needToChange.name.Contains("Peak")) FNVFlightMasterSettings.CurrentSettings.StonetalonPeak = value;
 		if (needToChange.name.Contains("Retreat")) FNVFlightMasterSettings.CurrentSettings.StonetalonSunRockRetreat = value;
 		if (needToChange.name.Contains("Hinterlands")) FNVFlightMasterSettings.CurrentSettings.TheHinterlands = value;
 		if (needToChange.name.Contains("Thousand")) FNVFlightMasterSettings.CurrentSettings.ThousandNeedles = value;
@@ -225,38 +223,95 @@ public class FNVFlightMasterSettings : Settings
 	[Description("Stops the bot, to prevent it from running into the Searing Gorge gate from Loch Modan and getting stuck over and over again")]
 	public bool pauseSearingGorge { get; set; }
 
-	// Token: 0x17000010 RID: 16
-	// (get) Token: 0x0600003B RID: 59 RVA: 0x00002207 File Offset: 0x00000407
-	// (set) Token: 0x0600003C RID: 60 RVA: 0x0000220F File Offset: 0x0000040F
+	[Setting]
+	[Category("Azeroth")]
 	public bool StranglethornGromgol { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool StranglethornBootyBay { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool SilverpineForest { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool HillsbradFoothills { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool ArathiHighlands { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool Badlands { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool Mulgore { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool SearingGorge { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool Orgrimmar { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool BarrensCrossroads { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool BarrensTaurajo { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool BarrensRatchet { get; set; }
-	public bool StonetalonPeak { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool StonetalonSunRockRetreat { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool TheHinterlands { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool ThousandNeedles { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool Undercity { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool SwampofSorrows { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool Desolace { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool Tanaris { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool Feralas { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool Azshara { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool Winterspring { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool DustwallowMarsh { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool Felwood { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool AshenvaleZoramgar { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool AshenvaleSplintertree { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool Moonglade { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool BurningSteppes { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool Silithus { get; set; }
+	[Setting]
+	[Category("Azeroth")]
 	public bool UngoroCrater { get; set; }
+
 }

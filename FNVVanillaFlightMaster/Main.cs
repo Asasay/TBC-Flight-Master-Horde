@@ -373,7 +373,6 @@ public class Main : IPlugin
 			new FlightMasterDB("Crossroads", 3615, new Vector3(-437.137f, -2596f, 95.8708f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.BarrensCrossroads),
 			new FlightMasterDB("Camp Taurajo", 10378, new Vector3(-2384.08f, -1880.94f, 95.9336f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.BarrensTaurajo),
 			new FlightMasterDB("Ratchet", 16227, new Vector3(-898.246f, -3769.65f, 11.7932f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.BarrensRatchet),
-			new FlightMasterDB("Stonetalon Peak", 4407, new Vector3(2682.83f, 1466.45f, 233.792f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.StonetalonPeak),
 			new FlightMasterDB("Sun Rock Retreat", 4312, new Vector3(968.077f, 1042.29f, 104.563f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.StonetalonSunRockRetreat),
 			new FlightMasterDB("The Hinterlands", 4314, new Vector3(-631.736f, -4720.6f, 5.48226f, "None"), 2, FNVFlightMasterSettings.CurrentSettings.TheHinterlands),
 			new FlightMasterDB("Thousand Needles", 4317, new Vector3(-5407.12f, -2419.61f, 89.7094f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.ThousandNeedles),
