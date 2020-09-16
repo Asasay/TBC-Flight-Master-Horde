@@ -390,7 +390,26 @@ public class Main : IPlugin
 			new FlightMasterDB("Moonglade", 12740, new Vector3(7466.15f, -2122.08f, 492.427f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.Moonglade),
 			new FlightMasterDB("Burning Steppes", 13177, new Vector3(-7504.06f, -2190.77f, 165.302f, "None"), 2, FNVFlightMasterSettings.CurrentSettings.BurningSteppes),
 			new FlightMasterDB("Silithus", 15178, new Vector3(-6810.2f, 841.704f, 49.7481f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.Silithus),
-			new FlightMasterDB("Un'Goro Crater", 10583, new Vector3(-6110.54f, -1140.35f, -186.866f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.UngoroCrater)
+			new FlightMasterDB("Un'Goro Crater", 10583, new Vector3(-6110.54f, -1140.35f, -186.866f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.UngoroCrater),
+
+			new FlightMasterDB("Thrallmar", 16587, new Vector3(228.5f, 2633.57f, 87.67f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.Thrallmar),
+			new FlightMasterDB("Falcon Watch", 18942, new Vector3(-587.41f, 4101.01f, 91.37f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.FalconWatch),
+			new FlightMasterDB("Zabra'jin", 18791, new Vector3(219.45f, 7816f, 22.72f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.Zabrajin),
+			new FlightMasterDB("Garadar", 18808, new Vector3(-1261.09f, 7133.39f, 57.34f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.Garadar),
+			new FlightMasterDB("Area 52", 18938, new Vector3(3082.31f, 3596.11f, 144.02f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.Area52),
+			new FlightMasterDB("Shadowmoon Village", 19317, new Vector3(-3018.62f, 2557.09f, 79.09f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.ShadowmoonVillage),
+			new FlightMasterDB("Stonebreaker Hold", 18807, new Vector3(-2567.33f, 4423.83f, 39.33f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.StonebreakerHold),
+			new FlightMasterDB("Thunderlord Stronghold", 18953, new Vector3(2446.37f, 6020.93f, 154.34f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.ThunderlordStronghold),
+			new FlightMasterDB("Shattrath City", 18940, new Vector3(-1837.23f, 5301.9f, -12.43f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.Shattrath),
+			new FlightMasterDB("The Stormspire", 19583, new Vector3(4157.58f, 2959.69f, 352.08f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.TheStormspire),
+			new FlightMasterDB("Altar of Sha'tar", 19581, new Vector3(-3065.6f, 749.42f, -10.1f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.AltarofShatar),
+			new FlightMasterDB("Cosmowrench", 20515, new Vector3(2974.95f, 1848.24f, 141.28f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.Cosmowrench),
+			new FlightMasterDB("Sanctum of the Stars", 21766, new Vector3(-4073.17f, 1123.61f, 42.47f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.SanctumOfTheStars),
+			new FlightMasterDB("Spinebreaker Ridge", 19558, new Vector3(-1316.84f, 2358.62f, 88.96f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.SpinebreakerPost),
+			new FlightMasterDB("Mok'Nathal Village", 22455, new Vector3(2028.79f, 4705.27f, 150.51f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.MokNathalVillage),
+			new FlightMasterDB("Evergrove", 22216, new Vector3(2976.01f, 5501.13f, 143.67f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.Evergrove),
+			new FlightMasterDB("Swamprat Post", 20762, new Vector3(91.67f, 5214.92f, 23.1f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.SwampratPost),
+			new FlightMasterDB("The Dark Portal", 18930, new Vector3(-178.09f, 1026.72f, 54.19f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.TheDarkPortal)
 
 		};
 	}
@@ -482,7 +501,7 @@ public class Main : IPlugin
 			{
 				if (flightMasterDB.continent.Equals(Main.checkContinent()))
 				{
-					int num = Lua.LuaDoString<int>("for i=0,30 do if string.find(TaxiNodeName(i),\'" + to.name.Replace("'", "\\'") + "\') then return i end end return -1", "");
+					int num = Lua.LuaDoString<int>("for i=0,48 do if string.find(TaxiNodeName(i),\'" + to.name.Replace("'", "\\'") + "\') then return i end end return -1", "");
 					if (num == -1 && flightMasterDB.alreadyDiscovered)
 					{
 						Logging.Write("[VanillaFlightMaster]: Taxi node " + flightMasterDB.name + " has not been discovered so far");
@@ -503,7 +522,7 @@ public class Main : IPlugin
 	}
 
 	// Token: 0x04000001 RID: 1
-	private string version = "1.6.2";
+	private string version = "1.7";
 
 	// Token: 0x04000002 RID: 2
 	public static int timer = 0;
