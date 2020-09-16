@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyTitle("VanillaFlightMaster")]
-[assembly: AssemblyDescription("Vanilla taxi plugin designed for wRobot")]
+[assembly: AssemblyTitle("tbcFlightMaster")]
+[assembly: AssemblyDescription("TBC taxi plugin designed for wRobot")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("VanillaFlightMaster")]
+[assembly: AssemblyProduct("tbcFlightMaster")]
 [assembly: AssemblyCopyright("FNV316 Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: ComVisible(false)]

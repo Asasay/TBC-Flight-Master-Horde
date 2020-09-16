@@ -134,13 +134,13 @@ public class FNVFlightMasterSettings : Settings
 
 		try
 		{
-			FNVFlightMasterSettings.CurrentSettings = Settings.Load<FNVFlightMasterSettings>(Settings.AdviserFilePathAndName("VanillaFlightMaster_DB", ObjectManager.Me.Name + "." + Usefuls.RealmName));
+			FNVFlightMasterSettings.CurrentSettings = Settings.Load<FNVFlightMasterSettings>(Settings.AdviserFilePathAndName("tbcFlightMaster_DB", ObjectManager.Me.Name + "." + Usefuls.RealmName));
 		}
 		catch (Exception arg)
 		{
-			Logging.Write("[VanillaFlightMaster]: Error when trying to reload DB file -> " + arg);
+			Logging.Write("[tbcFlightMaster]: Error when trying to reload DB file -> " + arg);
 		}
-		Logging.Write("[VanillaFlightMaster]: Settings saved of Flight Master " + needToChange.name);
+		Logging.Write("[tbcFlightMaster]: Settings saved of Flight Master " + needToChange.name);
 	}
 
 	// Token: 0x17000007 RID: 7
@@ -154,11 +154,11 @@ public class FNVFlightMasterSettings : Settings
 		bool result;
 		try
 		{
-			result = base.Save(Settings.AdviserFilePathAndName("VanillaFlightMaster_DB", ObjectManager.Me.Name + "." + Usefuls.RealmName));
+			result = base.Save(Settings.AdviserFilePathAndName("tbcFlightMaster_DB", ObjectManager.Me.Name + "." + Usefuls.RealmName));
 		}
 		catch (Exception arg)
 		{
-			Logging.WriteDebug("VanillaFlightMaster_DB => Save(): " + arg);
+			Logging.WriteDebug("tbcFlightMaster_DB => Save(): " + arg);
 			result = false;
 		}
 		return result;
@@ -169,17 +169,17 @@ public class FNVFlightMasterSettings : Settings
 	{
 		try
 		{
-			bool flag = File.Exists(Settings.AdviserFilePathAndName("VanillaFlightMaster_DB", ObjectManager.Me.Name + "." + Usefuls.RealmName));
+			bool flag = File.Exists(Settings.AdviserFilePathAndName("tbcFlightMaster_DB", ObjectManager.Me.Name + "." + Usefuls.RealmName));
 			if (flag)
 			{
-				FNVFlightMasterSettings.CurrentSettings = Settings.Load<FNVFlightMasterSettings>(Settings.AdviserFilePathAndName("VanillaFlightMaster_DB", ObjectManager.Me.Name + "." + Usefuls.RealmName));
+				FNVFlightMasterSettings.CurrentSettings = Settings.Load<FNVFlightMasterSettings>(Settings.AdviserFilePathAndName("tbcFlightMaster_DB", ObjectManager.Me.Name + "." + Usefuls.RealmName));
 				return true;
 			}
 			FNVFlightMasterSettings.CurrentSettings = new FNVFlightMasterSettings();
 		}
 		catch (Exception arg)
 		{
-			Logging.WriteDebug("VanillaFlightMaster_DB => Load(): " + arg);
+			Logging.WriteDebug("tbcFlightMaster_DB => Load(): " + arg);
 		}
 		return false;
 	}
