@@ -28,7 +28,7 @@ public class Main : IPlugin
 	// Token: 0x06000003 RID: 3
 	public void Initialize()
 	{
-		Logging.Write("[VanillaFlightMaster]: Flight Master initialized - " + this.version);
+		Logging.Write("[tbcFlightMaster]: Flight Master initialized - " + this.version);
 		Main._isLaunched = true;
 		Main.inProcessing = false;
 		Main._copySettings = true;
@@ -55,7 +55,7 @@ public class Main : IPlugin
 		MovementEvents.OnMovementPulse -= Main.MovementEventsOnOnMovementPulse;
 		MovementEvents.OnSeemStuck -= Main.MovementEventsOnOnSeemStuck;
 		FNVFlightMasterSettings.CurrentSettings.Save();
-		Logging.Write("[VanillaFlightMaster]: Flight Master disposed");
+		Logging.Write("[tbcFlightMaster]: Flight Master disposed");
 	}
 
 	// Token: 0x06000005 RID: 5
@@ -71,7 +71,7 @@ public class Main : IPlugin
 	{
 		if (wManagerSetting.CurrentSetting.FlightMasterTaxiUse)
 		{
-			Logging.Write("[VanillaFlightMaster]: WRobots Taxi is enabled, going to disable it...");
+			Logging.Write("[tbcFlightMaster]: WRobots Taxi is enabled, going to disable it...");
 			wManagerSetting.CurrentSetting.FlightMasterTaxiUse = false;
 		}
 	}
@@ -135,7 +135,7 @@ public class Main : IPlugin
 			Thread.Sleep(5000);
 		}
 		Thread.Sleep(Usefuls.Latency * 3 + 1500);
-		Logging.Write("[VanillaFlightMaster]: Reset taxi");
+		Logging.Write("[tbcFlightMaster]: Reset taxi");
 		Main._takenTaxi = false;
 		Main.from = null;
 		Main.to = null;
@@ -163,7 +163,7 @@ public class Main : IPlugin
 			Main.stuckCounter++;
 			if (Main.stuckCounter >= 5)
 			{
-				Logging.Write("[VanillaFlightMaster]: Repeated stucks detected at the locked gate between Loch Modan and Searing Gorge. Going to stop bot, to prevent getting caught");
+				Logging.Write("[tbcFlightMaster]: Repeated stucks detected at the locked gate between Loch Modan and Searing Gorge. Going to stop bot, to prevent getting caught");
 				Main.stuckCounter = 0;
 				Products.ProductStop();
 			}
@@ -174,7 +174,7 @@ public class Main : IPlugin
 		}
 		if (Main._timer || Main._takenTaxi)
 		{
-			Logging.Write("[VanillaFlightMaster]: SeemStuck detected, reset taxi to help solving it");
+			Logging.Write("[tbcFlightMaster]: SeemStuck detected, reset taxi to help solving it");
 			Main.resetTaxi();
 		}
 	}
@@ -205,7 +205,7 @@ public class Main : IPlugin
 				{
 					Logging.Write(string.Concat(new object[]
 					{
-						"[VanillaFlightMaster]: Currently following path or distance to start (",
+						"[tbcFlightMaster]: Currently following path or distance to start (",
 						Main.calculateRealDistance(ObjectManager.Me.Position, points.Last<Vector3>()),
 						" yards) is smaller than setting value (",
 						FNVFlightMasterSettings.CurrentSettings.skipIfFollowPathDistance,
@@ -231,7 +231,7 @@ public class Main : IPlugin
 				Thread.Sleep(1000);
 				if (!Main.from.name.Contains(Main.to.name) && !Main.to.name.Contains("null") && !Main.to.name.Contains("FlightMaster") && !Main.from.name.Contains("null") && !Main.from.Equals(Main.to) && Main.calculateRealDistance(ObjectManager.Me.Position, Main.from.position) + Main.calculateRealDistance(Main.to.position, Main.destinationVector) + (float)FNVFlightMasterSettings.CurrentSettings.shorterMinDistance <= Main.saveDistance)
 				{
-					Logging.Write("[VanillaFlightMaster]: Shorter path detected, taking Taxi from " + Main.from.name + " to " + Main.to.name);
+					Logging.Write("[tbcFlightMaster]: Shorter path detected, taking Taxi from " + Main.from.name + " to " + Main.to.name);
 					Main.inProcessing = true;
 					Main.checkPathActive = true;
 					Main.checkPathActiveFM = Main.from;
@@ -243,7 +243,7 @@ public class Main : IPlugin
 				}
 				else
 				{
-					Logging.Write("[VanillaFlightMaster]: No shorter path available, skip flying");
+					Logging.Write("[tbcFlightMaster]: No shorter path available, skip flying");
 					cancelable.Cancel = false;
 					Main._timer = true;
 					Main.inProcessing = false;
@@ -284,7 +284,7 @@ public class Main : IPlugin
 			{
 				Lua.LuaDoString("RotaOn = true", false);
 			}
-			Logging.Write("[VanillaFlightMaster]: Resetting pathing");
+			Logging.Write("[tbcFlightMaster]: Resetting pathing");
 		});
 	}
 
@@ -346,14 +346,14 @@ public class Main : IPlugin
 	{
 		while (ObjectManager.Me.IsOnTaxi)
 		{
-			Logging.Write("[VanillaFlightMaster]: On taxi, waiting");
+			Logging.Write("[tbcFlightMaster]: On taxi, waiting");
 			Thread.Sleep(30000);
 		}
 		Main._takenTaxi = true;
 		Main.inProcessing = false;
 		Thread.Sleep(5000);
 		Main.Reenable();
-		Logging.Write("[VanillaFlightMaster]: Arrived at destination " + destinationFlightMaster + " , finished waiting");
+		Logging.Write("[tbcFlightMaster]: Arrived at destination " + destinationFlightMaster + " , finished waiting");
 	}
 
 	// Token: 0x06000015 RID: 21
@@ -390,7 +390,26 @@ public class Main : IPlugin
 			new FlightMasterDB("Moonglade", 12740, new Vector3(7466.15f, -2122.08f, 492.427f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.Moonglade),
 			new FlightMasterDB("Burning Steppes", 13177, new Vector3(-7504.06f, -2190.77f, 165.302f, "None"), 2, FNVFlightMasterSettings.CurrentSettings.BurningSteppes),
 			new FlightMasterDB("Silithus", 15178, new Vector3(-6810.2f, 841.704f, 49.7481f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.Silithus),
-			new FlightMasterDB("Un'Goro Crater", 10583, new Vector3(-6110.54f, -1140.35f, -186.866f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.UngoroCrater)
+			new FlightMasterDB("Un'Goro Crater", 10583, new Vector3(-6110.54f, -1140.35f, -186.866f, "None"), 1, FNVFlightMasterSettings.CurrentSettings.UngoroCrater),
+
+			new FlightMasterDB("Thrallmar", 16587, new Vector3(228.5f, 2633.57f, 87.67f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.Thrallmar),
+			new FlightMasterDB("Falcon Watch", 18942, new Vector3(-587.41f, 4101.01f, 91.37f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.FalconWatch),
+			new FlightMasterDB("Zabra'jin", 18791, new Vector3(219.45f, 7816f, 22.72f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.Zabrajin),
+			new FlightMasterDB("Garadar", 18808, new Vector3(-1261.09f, 7133.39f, 57.34f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.Garadar),
+			new FlightMasterDB("Area 52", 18938, new Vector3(3082.31f, 3596.11f, 144.02f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.Area52),
+			new FlightMasterDB("Shadowmoon Village", 19317, new Vector3(-3018.62f, 2557.09f, 79.09f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.ShadowmoonVillage),
+			new FlightMasterDB("Stonebreaker Hold", 18807, new Vector3(-2567.33f, 4423.83f, 39.33f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.StonebreakerHold),
+			new FlightMasterDB("Thunderlord Stronghold", 18953, new Vector3(2446.37f, 6020.93f, 154.34f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.ThunderlordStronghold),
+			new FlightMasterDB("Shattrath City", 18940, new Vector3(-1837.23f, 5301.9f, -12.43f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.Shattrath),
+			new FlightMasterDB("The Stormspire", 19583, new Vector3(4157.58f, 2959.69f, 352.08f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.TheStormspire),
+			new FlightMasterDB("Altar of Sha'tar", 19581, new Vector3(-3065.6f, 749.42f, -10.1f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.AltarofShatar),
+			new FlightMasterDB("Cosmowrench", 20515, new Vector3(2974.95f, 1848.24f, 141.28f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.Cosmowrench),
+			new FlightMasterDB("Sanctum of the Stars", 21766, new Vector3(-4073.17f, 1123.61f, 42.47f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.SanctumOfTheStars),
+			new FlightMasterDB("Spinebreaker Ridge", 19558, new Vector3(-1316.84f, 2358.62f, 88.96f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.SpinebreakerPost),
+			new FlightMasterDB("Mok'Nathal Village", 22455, new Vector3(2028.79f, 4705.27f, 150.51f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.MokNathalVillage),
+			new FlightMasterDB("Evergrove", 22216, new Vector3(2976.01f, 5501.13f, 143.67f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.Evergrove),
+			new FlightMasterDB("Swamprat Post", 20762, new Vector3(91.67f, 5214.92f, 23.1f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.SwampratPost),
+			new FlightMasterDB("The Dark Portal", 18930, new Vector3(-178.09f, 1026.72f, 54.19f, "None"), 530, FNVFlightMasterSettings.CurrentSettings.TheDarkPortal)
 
 		};
 	}
@@ -412,12 +431,12 @@ public class Main : IPlugin
 					Thread.Sleep(Usefuls.Latency + 1500);
 					while (Main._updateNodes)
 					{
-						Logging.Write("[VanillaFlightMaster]: Taxi node update in progress, waiting...");
+						Logging.Write("[tbcFlightMaster]: Taxi node update in progress, waiting...");
 						Thread.Sleep(10000);
 					}
 					int num = Lua.LuaDoString<int>("for i=0,30 do if string.find(TaxiNodeName(i),\'" + to.name.Replace("'", "\\'") + "\') then return i end end", "");
 					Lua.LuaDoString("TakeTaxiNode(" + num + ")", false);
-					Logging.Write("[VanillaFlightMaster]: Taking Taxi from " + from.name + " to " + to.name);
+					Logging.Write("[tbcFlightMaster]: Taking Taxi from " + from.name + " to " + to.name);
 					Thread.Sleep(Usefuls.Latency + 500);
 					Keyboard.DownKey(Memory.WowMemory.Memory.WindowHandle, Keys.Escape);
 					Thread.Sleep(Usefuls.Latency + 2500);
@@ -454,10 +473,10 @@ public class Main : IPlugin
 				Thread.Sleep(Usefuls.Latency + 1500);
 				while (Main._updateNodes)
 				{
-					Logging.Write("[VanillaFLightMaster]: Taxi node update in progress...");
+					Logging.Write("[tbcFlightMaster]: Taxi node update in progress...");
 					Thread.Sleep(10000);
 				}
-				Logging.Write("[VanillaFlightMaster]: Flight Master " + flightMasterToDiscover.name + " discovered");
+				Logging.Write("[tbcFlightMaster]: Flight Master " + flightMasterToDiscover.name + " discovered");
 				flightMasterToDiscover.alreadyDiscovered = true;
 				FNVFlightMasterSettings.flightMasterSaveChanges(flightMasterToDiscover, true);
 				Thread.Sleep(Usefuls.Latency * 5);
@@ -482,16 +501,16 @@ public class Main : IPlugin
 			{
 				if (flightMasterDB.continent.Equals(Main.checkContinent()))
 				{
-					int num = Lua.LuaDoString<int>("for i=0,30 do if string.find(TaxiNodeName(i),\'" + to.name.Replace("'", "\\'") + "\') then return i end end return -1", "");
+					int num = Lua.LuaDoString<int>("for i=0,48 do if string.find(TaxiNodeName(i),\'" + to.name.Replace("'", "\\'") + "\') then return i end end return -1", "");
 					if (num == -1 && flightMasterDB.alreadyDiscovered)
 					{
-						Logging.Write("[VanillaFlightMaster]: Taxi node " + flightMasterDB.name + " has not been discovered so far");
+						Logging.Write("[tbcFlightMaster]: Taxi node " + flightMasterDB.name + " has not been discovered so far");
 						flightMasterDB.alreadyDiscovered = false;
 						FNVFlightMasterSettings.flightMasterSaveChanges(flightMasterDB, false);
 					}
 					else if (num != -1 && !flightMasterDB.alreadyDiscovered)
 					{
-						Logging.Write("[VanillaFlightMaster]: Taxi node " + flightMasterDB.name + " has already been discovered");
+						Logging.Write("[tbcFlightMaster]: Taxi node " + flightMasterDB.name + " has already been discovered");
 						flightMasterDB.alreadyDiscovered = true;
 						FNVFlightMasterSettings.flightMasterSaveChanges(flightMasterDB, true);
 					}
@@ -503,7 +522,7 @@ public class Main : IPlugin
 	}
 
 	// Token: 0x04000001 RID: 1
-	private string version = "1.6.2";
+	private string version = "1.7";
 
 	// Token: 0x04000002 RID: 2
 	public static int timer = 0;
@@ -585,12 +604,12 @@ public class Main : IPlugin
 	{
 		int millisecondsTimeout = 10000;
 		List<FlightMasterDB> list = Main.fillDB();
-		Logging.Write("[VanillaFlightMaster]: Taxi scan started");
+		Logging.Write("[tbcFlightMaster]: Taxi scan started");
 		while (Products.IsStarted)
 		{
 			if (Main._discoverTaxiTimer || Main._discoverInProessing)
 			{
-				Logging.Write("[VanillaFlightMaster]: Discover in processing or scan for nearby nodes paused");
+				Logging.Write("[tbcFlightMaster]: Discover in processing or scan for nearby nodes paused");
 				for (int i = FNVFlightMasterSettings.CurrentSettings.pauseTaxiTime; i > 0; i -= 1000)
 				{
 					Thread.Sleep(1000);
@@ -604,7 +623,7 @@ public class Main : IPlugin
 			string text = Logging.Status;
 			while (text.Contains("First Aid") && Usefuls.MapZoneName.Contains("Teldrassil"))
 			{
-				Logging.Write("[VanillaFlightMaster]: HumanMasterPlugin trying to train First Aid. Pausing undiscovered node scan for five minutes to avoid conflicts");
+				Logging.Write("[tbcFlightMaster]: HumanMasterPlugin trying to train First Aid. Pausing undiscovered node scan for five minutes to avoid conflicts");
 				Thread.Sleep(300000);
 			}
 			if (Conditions.InGameAndConnectedAndAliveAndProductStartedNotInPause && !Main._taxiToDiscover && !ObjectManager.Me.IsOnTaxi)
@@ -616,7 +635,7 @@ public class Main : IPlugin
 						Main.taxiToDiscover = flightMasterDB;
 						Main.discoverTaxiNode = flightMasterDB;
 						Main._taxiToDiscover = true;
-						Logging.Write("[VanillaFlightMaster]: Near undiscovered Taxi node found: " + flightMasterDB.name);
+						Logging.Write("[tbcFlightMaster]: Near undiscovered Taxi node found: " + flightMasterDB.name);
 						Thread.Sleep(1000 + Usefuls.Latency);
 						while (!MovementManager.InMovement)
 						{
